@@ -1,30 +1,25 @@
 # Quiz4 Backend
 
-A backend API for the *Quiz4* application — designed to handle quiz data, user authentication, and related services for the frontend client.
+A backend API for the Quiz4 application. This server handles quiz data, user authentication, and related backend services for the frontend client.
 
 ## 🚀 About
 
-This repository contains the backend server for the Quiz4 application. It exposes RESTful API endpoints that manage quizzes, questions, users, and results. The backend is built to be scalable, modular, and easy to extend.
+This repository contains the backend server for the Quiz4 application. It provides RESTful API endpoints to manage quizzes, questions, users, and results. The backend is designed to be modular, scalable, and easy to maintain.
 
 ## 🧠 Features
 
-- API endpoints for quizzes, questions, user accounts, and results
-- Authentication & authorization (*describe method: JWT, OAuth, etc.*)
-- Validation of input data
-- Error handling and standard API responses
-- Easily consumable by frontend apps or mobile clients
+- RESTful API endpoints
+- Quiz and question management
+- User authentication and authorization
+- Input validation and error handling
+- Ready to integrate with a frontend application
 
 ## 📦 Built With
 
-List the technologies, frameworks, or languages used. Examples:
-
 - Node.js  
 - Express.js  
-- MongoDB / PostgreSQL / MySQL  
-- Sequelize / Mongoose  
-- dotenv for configuration
-
-*(Replace these with your actual stack)*
+- *(Add your database here: MongoDB / MySQL / PostgreSQL)*  
+- dotenv  
 
 ## 🛠️ Getting Started
 
@@ -32,13 +27,44 @@ List the technologies, frameworks, or languages used. Examples:
 
 Make sure you have the following installed:
 
-- Node.js >= *version*
-- npm or yarn
-- A database service (*e.g., MongoDB, PostgreSQL, MySQL*)
+- Node.js (v16 or higher recommended)
+- npm
+- A database service (if required by the project)
 
-### Installation
+## ▶️ How to Run the Backend
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Rolian-Sarmiento/quiz4_backend.git
-   cd quiz4_backend
+Follow these steps to run the backend server locally:
+
+### 1️⃣ Clone the Repository
+```bash
+git clone https://github.com/Rolian-Sarmiento/quiz4_backend.git
+cd quiz4_backend
+
+2️⃣ Install Dependencies
+
+npm install
+
+3️⃣ Configure Environment Variables
+
+Create a .env file in the root directory and add the required variables. Example:
+
+PORT=3000
+DATABASE_URL=your_database_url
+JWT_SECRET=your_secret_key
+
+(Adjust the variables based on your project setup.)
+4️⃣ Run the Server
+
+For development:
+
+npm run dev
+
+For production:
+
+npm start
+
+5️⃣ Access the API
+
+Once the server is running, the backend will be accessible at:
+
+http://localhost:3000
