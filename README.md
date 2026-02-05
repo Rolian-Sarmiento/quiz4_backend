@@ -1,3 +1,5 @@
+LINK OF THE FRONTEND: https://github.com/Nibe-Git-Hub/quiz4_frontend
+
 # Quiz4 Backend
 
 A backend API for the Quiz4 application. This server handles quiz data, user authentication, and related backend services for the frontend client.
