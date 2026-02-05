@@ -1,10 +1,18 @@
 from django.shortcuts import render
-from django.http import JsonResponse
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 def getRoutes(request):
     routes = [
-        '/api/v1/project/', # HomeScreen (/api/v1/projects)
-        '/api/v1/projects/<id>', # DetailScreen (/api/v1/projects/<id>)
-        '/api/v1/project/create/', # ProjectCreateScreen (/api/v1/projects/create/)
+        '/api/v1/projects/<id>/task/create/', # TaskCreateScreen (/api/v1/projects/<id>/task/create/)
     ]
+
+@api_view(['GET'])
+def getProject(request, pk):
+    project = None
+    for i in project:
+        if i['_id'] == pk:
+            project = i
+            break
+        return Response(project)
 # Create your views here.
