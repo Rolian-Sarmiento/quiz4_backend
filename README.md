@@ -1,72 +1,126 @@
 LINK OF THE FRONTEND: https://github.com/Nibe-Git-Hub/quiz4_frontend
 
-# Quiz4 Backend
+Quiz 4 Backend API
 
-A backend API for the Quiz4 application. This server handles quiz data, user authentication, and related backend services for the frontend client.
+A robust RESTful API built with Node.js and Express to manage quizzes, user authentication, and scoring. This backend serves as the core engine for the Quiz 4 application.
+🚀 Getting Started
+Prerequisites
 
-## 🚀 About
+    Node.js (v14.x or higher)
 
-This repository contains the backend server for the Quiz4 application. It provides RESTful API endpoints to manage quizzes, questions, users, and results. The backend is designed to be modular, scalable, and easy to maintain.
+    npm or yarn
 
-## 🧠 Features
+    MongoDB (Local or Atlas)
 
-- RESTful API endpoints
-- Quiz and question management
-- User authentication and authorization
-- Input validation and error handling
-- Ready to integrate with a frontend application
+Installation
 
-## 📦 Built With
+    Clone the repository:
+    Bash
 
-- Node.js  
-- Express.js  
-- *(Add your database here: MongoDB / MySQL / PostgreSQL)*  
-- dotenv  
+    git clone https://github.com/Rolian-Sarmiento/quiz4_backend.git
+    cd quiz4_backend
 
-## 🛠️ Getting Started
+    Install dependencies:
+    Bash
 
-### Prerequisites
+    npm install
 
-Make sure you have the following installed:
+    Environment Variables: Create a .env file in the root directory and add the following:
+    Code snippet
 
-- Node.js (v16 or higher recommended)
-- npm
-- A database service (if required by the project)
+    PORT=5000
+    MONGO_URI=your_mongodb_connection_string
+    JWT_SECRET=your_super_secret_key
 
-## ▶️ How to Run the Backend
+    Run the application:
+    Bash
 
-Follow these steps to run the backend server locally:
+    # Development mode
+    npm run dev
 
-### 1️⃣ Clone the Repository
-```bash
-git clone https://github.com/Rolian-Sarmiento/quiz4_backend.git
-cd quiz4_backend
+    # Production mode
+    npm start
 
-2️⃣ Install Dependencies
+🛣 API Endpoints
+1. Authentication
+Method	Endpoint	Description	Auth Required
+POST	/api/auth/register	Register a new user	No
+POST	/api/auth/login	Login and receive JWT	No
+2. Quizzes
+Method	Endpoint	Description	Auth Required
+GET	/api/quizzes	Get all available quizzes	Yes
+GET	/api/quizzes/:id	Get details of a specific quiz	Yes
+POST	/api/quizzes	Create a new quiz (Admin)	Yes (Admin)
+DELETE	/api/quizzes/:id	Delete a quiz	Yes (Admin)
+3. Submissions & Scoring
+Method	Endpoint	Description	Auth Required
+POST	/api/scores/submit	Submit quiz answers	Yes
+GET	/api/scores/user/:id	Get quiz history for a user	Yes
+🧪 Testing with Postman
 
-npm install
+Follow these steps to test the endpoints effectively:
+Step 1: Base URL
 
-3️⃣ Configure Environment Variables
+Set your base URL in Postman as a variable or directly: http://localhost:5000
+Step 2: Register & Login
 
-Create a .env file in the root directory and add the required variables. Example:
+    Select POST and enter {{BASE_URL}}/api/auth/register.
 
-PORT=3000
-DATABASE_URL=your_database_url
-JWT_SECRET=your_secret_key
+    Go to the Body tab, select raw and JSON.
 
-(Adjust the variables based on your project setup.)
-4️⃣ Run the Server
+    Enter:
+    JSON
 
-For development:
+    {
+      "username": "testuser",
+      "email": "test@example.com",
+      "password": "password123"
+    }
 
-npm run dev
+    Once registered, use the same credentials for the /login endpoint.
 
-For production:
+Step 3: Handling Authorization (JWT)
 
-npm start
+Most endpoints require a Bearer Token:
 
-5️⃣ Access the API
+    Copy the token received from the Login response.
 
-Once the server is running, the backend will be accessible at:
+    In Postman, go to the Authorization tab of your request.
 
-http://localhost:3000
+    Select Type: Bearer Token.
+
+    Paste your token into the Token field.
+
+Step 4: Creating a Quiz (Example)
+
+    Method: POST
+
+    URL: {{BASE_URL}}/api/quizzes
+
+    Body (JSON):
+    JSON
+
+    {
+      "title": "General Knowledge",
+      "questions": [
+        {
+          "questionText": "What is 2+2?",
+          "options": ["3", "4", "5"],
+          "correctAnswer": "4"
+        }
+      ]
+    }
+
+🛠 Tech Stack
+
+    Backend: Node.js, Express.js
+
+    Database: MongoDB with Mongoose
+
+    Authentication: JSON Web Tokens (JWT) & Bcrypt.js
+
+    Validation: Express-Validator
+
+📄 License
+
+This project is licensed under the MIT License.
